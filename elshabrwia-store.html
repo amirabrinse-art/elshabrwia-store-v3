@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11100e">
+<title>الشبراوية أميرة البواريك | ELSHABRWIA</title>
+<style>
+:root{--bg:#11100e;--panel:#1b1915;--gold:#c9a85b;--cream:#f2eadb;--muted:#b9ad98;--line:#403725}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--cream);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
+header{padding:28px 18px 22px;text-align:center;background:radial-gradient(ellipse at top,#3a2d16 0,#17140f 55%,#11100e 100%);border-bottom:1px solid var(--line)}
+.brand{font-size:13px;letter-spacing:3px;color:var(--gold);direction:ltr}.logo{font-size:28px;font-weight:700;margin:7px 0}.tag{color:var(--muted);font-size:14px}
+nav{display:flex;justify-content:center;gap:18px;padding:12px;border-bottom:1px solid var(--line);font-size:13px}nav a{color:var(--cream);text-decoration:none}
+.hero{max-width:1000px;margin:auto;padding:34px 18px 22px;text-align:center}.eyebrow{color:var(--gold);font-size:13px}.hero h1{font-size:clamp(25px,5vw,42px);line-height:1.35;margin:8px 0}.hero p{color:var(--muted);max-width:600px;margin:0 auto 18px}
+.btn{border:0;border-radius:24px;background:var(--gold);color:#17130b;padding:12px 22px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block}
+.section{max-width:1100px;margin:20px auto;padding:0 16px 35px}.section-title{text-align:center;margin:8px 0 20px}.section-title h2{margin:0;font-size:24px}.section-title p{color:var(--muted);font-size:13px;margin:4px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.visual{height:145px;display:grid;place-items:center;background:linear-gradient(145deg,#302719,#171512);color:var(--gold);font-size:42px}
+.info{padding:12px}.info h3{font-size:15px;margin:0 0 4px}.info p{font-size:12px;color:var(--muted);margin:0 0 8px;min-height:38px}.price{color:var(--gold);font-weight:bold;margin-bottom:10px}
+.add{width:100%;border:1px solid var(--gold);background:transparent;color:var(--cream);border-radius:20px;padding:8px;cursor:pointer}
+.cart{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px;margin-top:18px}.cart h3{margin:0 0 8px}.cart-row{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding:7px 0;font-size:13px}.cart-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.cart-actions button{flex:1}
+input{width:100%;padding:12px;border-radius:9px;border:1px solid var(--line);background:#12110f;color:var(--cream);margin:6px 0 10px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:25px;border-top:1px solid var(--line)}
+small{color:var(--muted)}@media(min-width:700px){.visual{height:190px}.products{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand">ELSHABRWIA</div>
+ <div class="logo">الشبراوية أميرة البواريك</div>
+ <div class="tag">جمالك يبدأ من اختيارك</div>
+</header>
+<nav><a href="#products">المنتجات</a><a href="#cart">سلة الطلبات</a><a href="https://wa.me/201063601069" target="_blank" rel="noopener">تواصلي معنا</a></nav>
+<section class="hero">
+ <div class="eyebrow">أناقة • جودة • اختيار يليق بيكي</div>
+ <h1>اختاري إطلالتك بثقة وأناقة</h1>
+ <p>اكتشفي مجموعة البواريك والشعر الطبيعي من الشبراوية. اختاري المنتج وأضيفيه للسلة، ثم أرسلي طلبك مباشرة عبر واتساب لتأكيد التفاصيل.</p>
+ <a class="btn" href="#products">تسوقي المجموعة</a>
+</section>
+<section class="section" id="products">
+ <div class="section-title"><h2>منتجاتنا</h2><p>أسعار تجريبية قابلة للتعديل قبل الإطلاق</p></div>
+ <div class="products" id="productList"></div>
+ <div class="cart" id="cart">
+  <h3>سلة الطلبات <small id="count">(0 منتجات)</small></h3>
+  <div id="cartItems"><small>السلة فارغة حاليًا.</small></div>
+  <div style="margin-top:10px;font-weight:bold">الإجمالي: <span id="total" style="color:var(--gold)">0 ج.م</span></div>
+  <label for="customer">اسم العميلة</label><input id="customer" placeholder="اكتبي اسمك">
+  <label for="address">العنوان / المنطقة (اختياري)</label><input id="address" placeholder="المنطقة والعنوان">
+  <div class="cart-actions"><button class="btn" onclick="sendOrder()">إرسال الطلب على واتساب</button><button class="add" onclick="clearCart()">تفريغ السلة</button></div>
+ </div>
+</section>
+<footer>© الشبراوية أميرة البواريك — ELSHABRWIA<br>للطلب والاستفسار: واتساب 01063601069</footer>
+<script>
+const products=[
+ {id:1,name:"4×4 Lace Wig",desc:"باروكة بقاعدة ليس 4×4",price:6500},
+ {id:2,name:"6×6 Lace Wig",desc:"باروكة بقاعدة ليس 6×6",price:8500},
+ {id:3,name:"Micro Laser",desc:"اختيار أنيق بمظهر طبيعي",price:9500},
+ {id:4,name:"Nano Laser",desc:"تصميم عملي وخفيف",price:5500},
+ {id:5,name:"Filipino Topper",desc:"تغطية وإضافة كثافة للشعر",price:2500},
+ {id:6,name:"American Tulle",desc:"قاعدة تول أمريكي",price:2200}
+];
+let cart=[];
+const money=n=>n.toLocaleString("en-US")+" ج.م";
+function renderProducts(){document.getElementById("productList").innerHTML=products.map(p=>`<article class="card"><div class="visual" aria-label="صورة مؤقتة للمنتج">✦</div><div class="info"><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)}</div><button class="add" onclick="add(${p.id})">أضيفي للسلة</button></div></article>`).join("")}
+function add(id){const p=products.find(x=>x.id===id);const found=cart.find(x=>x.id===id);if(found)found.qty++;else cart.push({...p,qty:1});renderCart()}
+function clearCart(){cart=[];renderCart()}
+function renderCart(){const count=cart.reduce((s,p)=>s+p.qty,0),total=cart.reduce((s,p)=>s+p.price*p.qty,0);document.getElementById("count").textContent=`(${count} منتجات)`;document.getElementById("total").textContent=money(total);document.getElementById("cartItems").innerHTML=cart.length?cart.map(p=>`<div class="cart-row"><span>${p.name} × ${p.qty}</span><span>${money(p.price*p.qty)}</span></div>`).join(""):"<small>السلة فارغة حاليًا.</small>"}
+function sendOrder(){if(!cart.length){alert("أضيفي منتجًا واحدًا على الأقل للسلة.");return}const name=document.getElementById("customer").value.trim();const address=document.getElementById("address").value.trim();if(!name){alert("من فضلك اكتبي اسمك.");return}const total=cart.reduce((s,p)=>s+p.price*p.qty,0);let msg=`طلب جديد من متجر الشبراوية أميرة البواريك%0Aالاسم: ${encodeURIComponent(name)}%0Aالعنوان: ${encodeURIComponent(address||"سيتم التأكيد لاحقًا")}%0Aالمنتجات:%0A`;cart.forEach(p=>msg+=`${encodeURIComponent(p.name)} × ${p.qty} — ${encodeURIComponent(money(p.price*p.qty))}%0A`);msg+=`الإجمالي: ${encodeURIComponent(money(total))}`;window.open("https://wa.me/201063601069?text="+msg,"_blank")}
+renderProducts();renderCart();
+</script>
+</body></html>
